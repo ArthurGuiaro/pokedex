@@ -1,38 +1,154 @@
-.App {
-  text-align: center;
+.img-type{
+  height: 2vw;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card-container{
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  
+
+}
+
+.img-types-container{
+  display: flex;
+  justify-content: space-evenly;
+  width: 5vw;
+  
+}
+
+.card{
+  width: 24vw;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  flex-direction: column  ;
+  border: 1px black solid;
+  align-items: center;
+
+}
+
+.card:hover {
+  background-color: lightgray ;
+}
+.card:hover #id{
+  color: white ;
+}
+
+.card-img{
+  height:10vw;
+  width: 10vw;
+}
+
+.detail-container{
+  margin:0px;
+  padding: 0 0 2vh 0;
+  display: flex;
+  align-items: center;
   flex-direction: column;
+}
+
+#card-name{
+  margin: 0 0 2vh 0;
+  font-size: 2vw;
+}
+
+nav{
+  background-color: red;
+  margin: 0 0 0 0;
+  height: 9vh;
+ padding: 0 2vw 0 2vw;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0.2vh 1vh black;
+}
+
+#pokeball-img{
+  width: 7vh;
+}
+
+#home-button{
+  width: 6vh;
+}
+
+
+body{
+  padding-top: 10vh;
+}
+
+.spinner{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#id{
+  color: gray;
+  margin: 0;
+  font-size: 1.2vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pokemon-page-main-container{
+display: flex;
+justify-content: center ;
+padding-top:5vh;
 }
+
+.pokemon-page-first-container{
+background-color: rgba(0,0,0,0.1);
+border-radius: 15px;
+}
+
+.page-text-container{
+  display: flex;
+  align-items: center;
+}
+
+#page-id-container{
+  margin-top: 2vh;
+}
+
+.page-pokemon-name{
+  font-size: 3vw;
+  margin: 0;
+}
+
+.page-pokemon-id{
+  font-size: 1.8vw;
+  color: lightgray;
+  margin:0;
+  margin-left: 1vw;
+}
+
+.pokemon-img{
+  width: 28vw;
+  
+}
+
+.pokemon-page-second-container{
+  padding: 0 0 0 2vw;
+}
+
+.page-details{
+  width: 30vw;
+  height: 40vh;
+  background-color: rgb(203, 241, 241);
+  border-radius: 20px;
+  display: flex;
+  margin-top: 2vh;
+}
+
+.details-column{
+  width: 15vw;
+  padding-left: 2vw;
+}
+
+
+
