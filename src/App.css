@@ -59,17 +59,66 @@ nav{
   background-color: red;
   margin: 0 0 0 0;
   height: 9vh;
- padding: 0 2vw 0 2vw;
+  padding: 0 0vw 0 0vw;
   position: fixed;
   width: 100vw;
   top: 0;
   display: flex;
   align-items: center;
   box-shadow: 0px 0.2vh 1vh black;
+  justify-content: space-between;
+
 }
 
+#nav-container{
+  display: flex;
+  align-items: center;
+  margin-right: 5vw;
+  width: 60vw;
+  justify-content: space-between;
+}
+
+#nav-container ul{
+  display: flex;
+  height: 9vh;
+  align-items: center;
+  width: 30vw;
+  
+}
+
+
+#anchor-tag{
+  color: white;
+  text-decoration: none;
+  margin-right:   2vw;
+
+}
+
+#anchor-tag:hover{
+  color: lightgray;
+}
+
+.selected{
+  color: lightgray;
+}
+
+#search-container{
+  display: flex;
+  align-items: center;
+}
+
+.search-icon{
+  height: 5vh;
+  
+}
+
+.search-input{
+  width: 30vw;
+  margin-left: 1vw;
+}
 #pokeball-img{
   width: 7vh;
+  margin-left:2vw ;
 }
 
 #home-button{
@@ -149,6 +198,29 @@ border-radius: 15px;
   width: 15vw;
   padding-left: 2vw;
 }
+
+.detail-container-cell {
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.detail-container-cell h2{
+
+
+}
+
+.detail-container-cell{
+
+}
+
+.gif-container{
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 
 

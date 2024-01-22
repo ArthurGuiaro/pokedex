@@ -18,6 +18,7 @@ import psychicImg from "../images/types/Pokemon_Type_Icon_Psychic.png"
 import rockImg from "../images/types/Pokemon_Type_Icon_Rock.png"
 import steelImg from "../images/types/Pokemon_Type_Icon_Steel.png"
 import waterImg from "../images/types/Pokemon_Type_Icon_Water.png"
+import axios from "axios"
 
 const PokemonPage = ({ data }) => {
     const { pokemonName } = useParams()
@@ -35,13 +36,12 @@ const PokemonPage = ({ data }) => {
     }
 
     useEffect(() => {
-        console.log(data)
-        console.log(pokemon)
-        console.log(pokemonName)
         getPokemon()
-        console.log(pokemon)
+        
 
     }, [pokemonName])
+
+    axios.get("https://pokeapi.co/api/v2/evolution-chain/549/").then((res)=> console.log(res))    
     return (
         <div className='pokemon-page-main-container'>
             <div className='pokemon-page-first-container'>
@@ -81,10 +81,15 @@ const PokemonPage = ({ data }) => {
                 </div>
                 <div className='page-details'>
                     <div className='details-column'>
-                        <div>
+                        <div className='detail-cell'>
 
-                            <h2>a</h2>
-                            <p>a</p>
+                            <h2>Height</h2>
+                            <p>{`${pokemon?.height/10} m`}</p>
+                        </div>
+                        <div className='detail-cell'>
+
+                            <h2>Weight</h2>
+                            <p>{`${pokemon?.weight/10} kg`}</p>
                         </div>
 
                         <div>
@@ -93,8 +98,8 @@ const PokemonPage = ({ data }) => {
                     </div>
 
                     <div className='details-column'>
-                        <div>
-                            <h2>a</h2>
+                        <div className='detail-container'>
+                            <h2>Height</h2>
                             <p>a</p>
                         </div>
 

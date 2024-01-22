@@ -7,17 +7,22 @@ import Home from "./pages/Home"
 import './App.css';
 import Navbar from './components/Navbar';
 import PokemonPage from './pages/PokemonPage';
+import ComingSoon from './pages/ComingSoon';
 
 function App() {
   const [pokemons, setPokemons] = useState([])
-  const [limit, setLimit] = useState(1000)
-  const [test, setTest] = useState(false)
+  const [pokemonsData, setPokemonsData] = useState([])
+  const [evolutionsData, setEvolutionsData] =useState([])
+  const [limitOfPokemons, setLimitOfPokemons] = useState(1)
+  const [limitOfEvolutions, setLimitOfEvolutions] = useState(3)
+  const [test, setTest] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
+  const [isEmpty,setIsEmpty]= useState(false)
 
   function getPokemons() {
     const endpoints = []
 
-    for (let i = 1; i <= limit; i += 1) {
+    for (let i = 1; i <= limitOfPokemons; i += 1) {
       endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
     }
     if (test) console.log(endpoints)
@@ -25,9 +30,44 @@ function App() {
 
     let response = axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then((result) => {
       setIsLoading(false)
-      setPokemons(result)
+      setPokemonsData(result)
     })
 
+  }
+
+  function organizeEvolutions(){
+
+    pokemonsData.map((pokemon)=>{
+      for(let i = 0; i> evolutionsData.length; i +=1){
+        for (let a = 0; a < evolutionsData[i].data.chain.length ; a+= 1) {
+          if(pokemon.data.name === evolutionsData[i].data.chain)
+          
+        }
+      }
+    })
+
+  }
+
+  function getEvolutions() {
+    const endpoints = []
+
+    for (let i = 1; i <= limitOfEvolutions; i += 1) {
+      endpoints.push(`https://pokeapi.co/api/v2/evolution-chain/${i}/`)
+    }
+    if (test) console.log(endpoints)
+    
+    
+    let response = axios.all(endpoints.map((endpoint) => axios.get(endpoint))).then((result) => {
+      setIsLoading(false)
+      setEvolutionsData(result)
+      if(evolutionsData.length === limitOfEvolutions) organizeEvolutions()
+    if (test) console.log(evolutionsData)
+    })
+  }
+
+  function getData(){
+    getPokemons()
+    getEvolutions()
   }
   // async function getPokemons(){
 
@@ -42,18 +82,35 @@ function App() {
   // }
 
   useEffect(() => {
-    getPokemons()
+    getData()
   }, [])
- 
+
+
+ function searchPokemon(search){
+  let newPokemons
+    if (search  === "") newPokemons = [...pokemonsData]
+    else {
+      newPokemons = [...pokemonsData].filter(pokemon => pokemon.data.name.toLowerCase().includes(search.trim().toLowerCase()))
+    }
+
+    if(newPokemons.length === 0) setIsEmpty(true)
+    else{
+      setIsEmpty(false)
+  }
+    setPokemons(newPokemons)
+ }
 
   return (
     <div className="App">
       {isLoading ? <div className='spinner'><img src="https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/react-lists/spinner.gif" /> </div>: 
       <>
-      <Navbar />
+      <Navbar searchPokemon={searchPokemon} />
+      <button onClick={()=>console.log(evolutionsData)}>a</button>
       <Routes>
           <Route path="/" element={<Home data={pokemons} />} />
           <Route path=":pokemonName" element={<PokemonPage data={pokemons} />} />
+          <Route path="Berries" element={<ComingSoon/>}/>
+          <Route path="Items" element={<ComingSoon/>}/>
 
         </Routes>
         </>
