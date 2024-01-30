@@ -5,8 +5,9 @@ import { Link, NavLink, Navigate } from 'react-router-dom'
 import {Input} from "antd"
 import searchIcon from "../images/icons/search-13-64.png"
 
-const Navbar = ({searchPokemon}) => {
+const Navbar = ({searchPokemon, toRandomPokemon, randomName}) => {
   const [search, setSearch]= useState("")
+  
 
   function handleSearch (e){
     let newText = e.target.value.trim().toLowerCase()
@@ -25,19 +26,19 @@ const Navbar = ({searchPokemon}) => {
       <div id='search-container'>
 
       <label><img className="search-icon" src={searchIcon}/></label>
-      <Link to="/">
+      <Link to="/PokemonsList">
       <Input className='search-input' value={search} type="text" onChange={handleSearch} />
       </Link>
       </div>
       
       <ul>
         <Link
-          to='/'
+          to='/PokemonsList'
           id="anchor-tag"
           className={({ isActive }) => (isActive ? 'selected' : '')}
         >
           {/* <img id="home-button" src={homePng} /> */}
-          <h2>Home</h2>
+          <h2>Pokémons</h2>
         </Link>
 
 
@@ -47,6 +48,7 @@ const Navbar = ({searchPokemon}) => {
         <Link to="/items" id="anchor-tag" className={({ isActive }) => (isActive ? 'selected' : '')}>
           <h2>Items</h2>
         </Link>
+        <a id="anchor-tag" className='random' onClick={()=> toRandomPokemon()}><h2>Random</h2>{randomName && <Navigate to={`/${randomName}`}/>}</a>
       </ul>
       </div>
     </nav>

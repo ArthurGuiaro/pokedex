@@ -18,6 +18,8 @@ import psychicImg from "../images/types/Pokemon_Type_Icon_Psychic.png"
 import rockImg from "../images/types/Pokemon_Type_Icon_Rock.png"
 import steelImg from "../images/types/Pokemon_Type_Icon_Steel.png"
 import waterImg from "../images/types/Pokemon_Type_Icon_Water.png"
+import shinyButtonOn from "../images/icons/shiny.png"
+import shinyButtonOff from "../images/icons/not shiny.png"
 import axios from "axios"
 
 const PokemonPage = ({ data }) => {
@@ -35,17 +37,25 @@ const PokemonPage = ({ data }) => {
 
     }
 
+    
+
+    function tradeMode(){
+        if(showShiny) setShowShiny(false)
+        if(!showShiny) setShowShiny(true)
+    }
+
     useEffect(() => {
         getPokemon()
         
 
     }, [pokemonName])
 
-    axios.get("https://pokeapi.co/api/v2/evolution-chain/549/").then((res)=> console.log(res))    
+    axios.get("https://pokeapi.co/api/v2/evolution-chain/1/").then((res)=> console.log(res))    
     return (
         <div className='pokemon-page-main-container'>
             <div className='pokemon-page-first-container'>
                 <img className="pokemon-img" src={showShiny ? pokemon?.sprites.other.home.front_shiny : pokemon?.sprites.other.home.front_default} />
+                <img className='shiny-button' onClick={tradeMode} src={showShiny ?  shinyButtonOn : shinyButtonOff }/>
             </div>
             <div className='pokemon-page-second-container'>
                 <div className='page-text-container'>
@@ -99,7 +109,7 @@ const PokemonPage = ({ data }) => {
 
                     <div className='details-column'>
                         <div className='detail-container'>
-                            <h2>Height</h2>
+                            <h2>Stats</h2>
                             <p>a</p>
                         </div>
 
